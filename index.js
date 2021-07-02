@@ -14,17 +14,17 @@ module.exports = ver => {
     if (nbt === null || !nbt?.display?.Lore) return null
     return nbt.display.Lore.map(line => new ChatMessage(line).toString())
   }
-  function removeColorCodes (str) {
+  function strRemoveColorCodes (str) {
     return str.replace(/§./g, '')
   }
-  function getSimpleItem (item, { ignoreProps = [] } = {}) {
+  function getSimpleItem (item, { ignoreProps = [], removeColorCodes = true } = {}) {
     if (item === null) return null
     const data = { slot: item.slot, count: item.count }
     data.nbt = getSimpleNBT(item)
     data.name = getName(data.nbt)
-    if (data.name !== null) data.name = removeColorCodes(data.name)
+    if (data.name !== null && removeColorCodes) data.name = strRemoveColorCodes(data.name)
     data.lore = getLore(data.nbt)
-    if (data.lore !== null) data.lore = data.lore.map(l => removeColorCodes(l))
+    if (data.lore !== null && removeColorCodes) data.lore = data.lore.map(l => strRemoveColorCodes(l))
     if (mcData.itemsByName[item.name]?.maxDurability) {
       data.durability = {
         used: item.durabilityUsed,

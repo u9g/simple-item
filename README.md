@@ -15,12 +15,13 @@ bot.once('spawn', () => {
 
 # API
 
-## getSimpleItem (item, { ignoreProps: [] })
+## getSimpleItem (item, { ignoreProps: string[], removeColorCodes: boolean })
 
 `item`: instance of prismarine-item
 
 `options`:
-- `ignoreProps` (Array<string>): properties that are deleted off of the simple item before it is returned
+- `ignoreProps` (`Array<string>`): properties that are deleted off of the simple item before it is returned
+- `removeColorCodes` (`boolean`): remove §x from the name/lore property before returning, default is true
 
 ### example output
 (good to know: by default, lore and name have all color codes stripped from them, there may be an option to disable this in the future)
