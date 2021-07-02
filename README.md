@@ -20,9 +20,51 @@ bot.once('spawn', () => {
 `item`: instance of prismarine-item
 
 `options`:
-    - `ignoreProps`: properties that are deleted off of the simple item before it is returned
+- `ignoreProps` (Array<string>): properties that are deleted off of the simple item before it is returned
 
-### returns (by default)
-
-`count`: number
-`enchants`: Array<>
+### example output
+(good to know: by default, lore and name have all color codes stripped from them, there may be an option to disable this in the future)
+```json
+{
+  "slot": 10,
+  "count": 1,
+  "nbt": {
+    "ench": [
+      {
+        "lvl": 5,
+        "id": 16
+      },
+      {
+        "lvl": 5,
+        "id": 34
+      }
+    ],
+    "display": {
+      "Lore": [
+        "§f§llore line 1",
+        "§6§llore line 2"
+      ],
+      "Name": "§e§My Sword"
+    }
+  },
+  "name": "My Sword",
+  "lore": [
+    "lore line 1",
+    "lore line 2"
+  ],
+  "durability": {
+    "used": 0,
+    "max": 1561
+  },
+  "enchants": [
+    {
+      "lvl": 5,
+      "name": "sharpness"
+    },
+    {
+      "lvl": 5,
+      "name": "unbreaking"
+    }
+  ]
+}
+```
